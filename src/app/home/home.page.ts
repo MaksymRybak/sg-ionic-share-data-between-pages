@@ -10,6 +10,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  valueFromChild = '';    // to save value from child component (textbox in out case)
 
   constructor(private modalCtrl: ModalController) {}
 
@@ -38,5 +39,10 @@ export class HomePage {
     const { data } = await modal.onWillDismiss();   // here we read data sent back from modal (using destructuring to save data in data const
                                                     // same as using modal.onDidDismiss()
     console.log('Data after modal close: ', data);
+  }
+
+  childChanged(data) {
+    // data sent from child component
+    this.valueFromChild = data;
   }
 }
