@@ -1,0 +1,7 @@
+{
+  "name": "sharedDataBetweenPagesApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
