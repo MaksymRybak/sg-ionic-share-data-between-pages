@@ -7,10 +7,26 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'lists',
+    loadChildren: () => import('./lists/lists.module').then( m => m.ListsPageModule)
+  },
+  {
+    path: 'lists/:listid',
+    loadChildren: () => import('./list-details/list-details.module').then( m => m.ListDetailsPageModule)
+  },
+  {
+    path: 'lists/:listid/items',
+    loadChildren: () => import('./items/items.module').then( m => m.ItemsPageModule)
+  },
+  {
+    path: 'lists/:listid/items/:itemid',
+    loadChildren: () => import('./item-details/item-details.module').then( m => m.ItemDetailsPageModule)
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
-  },
+  }
 ];
 
 @NgModule({
