@@ -19,4 +19,21 @@
       <ion-label color="secondary">Value from child: {{ valueFromChild }}</ion-label>
     </ion-card-content>
   </ion-card>
+
+  <ion-card>
+    <ion-card-header>      
+      <ion-card-title>Todos</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Add todo</ion-label>
+        <ion-input [(ngModel)]="todo"></ion-input>
+      </ion-item>
+      <ion-button (click)="addTodo()" expand="full">Add</ion-button>
+
+      <ion-list>
+        <ion-item *ngFor="let todo of todos | async; let i = index;" (click)="removeTodo(i)">{{ todo }}</ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

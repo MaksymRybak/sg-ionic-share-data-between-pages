@@ -33,3 +33,6 @@ ionic g component components/textbox
 ```
 ionic g service services/state
 ````
+
+## Notes
+- NGXS is a state management pattern + library for Angular

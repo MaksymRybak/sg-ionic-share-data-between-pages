@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ModalPage } from '../modal/modal.page';
 import { filter } from 'rxjs/operators';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,15 @@ import { filter } from 'rxjs/operators';
 export class HomePage {
   valueFromChild = '';    // to save value from child component (textbox in out case)
 
-  constructor(private modalCtrl: ModalController) {}
+  todos: Observable<string[]>;  // Observable to listen for state changes
+  todo = '';
+
+  constructor(
+    private modalCtrl: ModalController, 
+    private stateService: StateService
+  ) {
+    this.todos = this.stateService.todos;
+  }
 
   async showModal() {
     // to share data live between parent page and modal we can use BehaviorSubject
@@ -44,5 +53,14 @@ export class HomePage {
   childChanged(data) {
     // data sent from child component
     this.valueFromChild = data;
+  }
+
+  addTodo() {
+    this.stateService.addTodo(this.todo);   // update state
+    this.todo = '';
+  }
+
+  removeTodo(index) {
+    this.stateService.removeTodo(index);    // update state
   }
 }
