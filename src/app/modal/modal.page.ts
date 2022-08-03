@@ -12,6 +12,10 @@ export class ModalPage implements OnInit {
   @Input() filter: boolean;
   @Input() subject: BehaviorSubject<string>;
 
+  eroe = {
+    nome: ''
+  };
+
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
